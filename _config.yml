@@ -1,0 +1,14 @@
+title: Valeriia Kuka
+email: kavaivaleri@gmail.com
+description: >- 
+  My personal blog 
+baseurl: "" # leave empty if this is your main GitHub Pages site
+url: "https://kavaivaleri.github.io"
+twitter_username: valeriia_kuka
+github_username:  kavaivaleri
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag 
