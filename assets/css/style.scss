@@ -2,11 +2,37 @@
 
 // Custom styles
 :root {
-  --primary-color: #2c3e50;
-  --accent-color: #3498db;
+  // Innovation & Creativity
+  --color-innovation-1: #D4417A;
+  --color-innovation-2: #7E6192;
+  --color-innovation-3: #DC6F3A;
+  --color-innovation-4: #EBA2B3;
+  
+  // Daring & Non-conformism
+  --color-daring-1: #F2562C;
+  --color-daring-2: #654A97;
+  --color-daring-3: #D8E265;
+  --color-daring-4: #CD9DC5;
+  
+  // Self-expression & Individuality
+  --color-expression-1: #62A049;
+  --color-expression-2: #D14C41;
+  --color-expression-3: #D3889B;
+  --color-expression-4: #E0C148;
+  
+  // Imagination & Freedom
+  --color-imagination-1: #1D1848;
+  --color-imagination-2: #1692A8;
+  --color-imagination-3: #DEAFB5;
+  --color-imagination-4: #C4CC56;
+  
+  // Main theme colors
+  --primary-color: var(--color-imagination-1);
+  --accent-color: var(--color-innovation-1);
   --text-color: #333;
   --background-color: #fff;
-  --header-background: #f8f9fa;
+  --header-background: var(--color-imagination-3);
+  --link-hover: var(--color-daring-1);
 }
 
 body {
@@ -18,8 +44,8 @@ body {
 
 .site-header {
   background-color: var(--header-background);
-  border-top: 5px solid var(--primary-color);
-  border-bottom: 1px solid #e8e8e8;
+  border-top: 5px solid var(--color-innovation-1);
+  border-bottom: 1px solid var(--color-imagination-3);
 }
 
 .site-title {
@@ -70,7 +96,7 @@ a {
   transition: color 0.2s ease-in-out;
   
   &:hover {
-    color: var(--accent-color);
+    color: var(--link-hover);
   }
 }
 
@@ -84,4 +110,88 @@ pre, code {
 img {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+// Image styles
+.site-logo {
+  max-height: 60px;
+  width: auto;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.author-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-innovation-1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 1rem auto;
+  display: block;
+}
+
+// General image styles
+.img-rounded {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.img-bordered {
+  border: 3px solid var(--color-imagination-2);
+  padding: 4px;
+  background-color: white;
+}
+
+.img-hover-zoom {
+  overflow: hidden;
+  border-radius: 8px;
+  
+  img {
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.img-with-caption {
+  position: relative;
+  display: inline-block;
+  
+  figcaption {
+    background-color: var(--color-imagination-1);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 8px 8px;
+    font-size: 0.9em;
+  }
+}
+
+// Gallery grid
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  
+  img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--color-innovation-4);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border-color: var(--color-innovation-1);
+    }
+  }
 } 
