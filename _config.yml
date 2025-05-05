@@ -1,0 +1,33 @@
+title: My Personal Blog
+description: Welcome to my personal blog where I share my thoughts and experiences
+url: "" # Leave empty for now, we'll update it when you set up your custom domain
+author: Valeria
+email: # Add your email if you want to display it
+theme: minima
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Social links (uncomment and fill what you want to show)
+social_links:
+#  twitter: your-twitter-handle
+#  github: your-github-handle
+#  linkedin: your-linkedin-handle
+
+# Google Analytics (uncomment and add your GA ID if you want to use it)
+# google_analytics: UA-XXXXXXXX-X
+
+# SEO settings
+twitter:
+  username: # Add your Twitter handle (without @)
+  card: summary
+social:
+  name: Valeria # Your full name
+  links:
+    # Add your social profile links here
+    # - https://twitter.com/your-twitter-handle
+    # - https://github.com/your-github-handle
+    # - https://linkedin.com/in/your-linkedin-handle 
