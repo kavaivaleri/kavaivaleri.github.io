@@ -1,0 +1,87 @@
+@import "{{ site.theme }}";
+
+// Custom styles
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #3498db;
+  --text-color: #333;
+  --background-color: #fff;
+  --header-background: #f8f9fa;
+}
+
+body {
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  line-height: 1.7;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.site-header {
+  background-color: var(--header-background);
+  border-top: 5px solid var(--primary-color);
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.site-title {
+  font-weight: 700;
+  color: var(--primary-color);
+  
+  &:hover {
+    text-decoration: none;
+    color: var(--accent-color);
+  }
+}
+
+.post-link {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--primary-color);
+  
+  &:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+}
+
+.post-meta {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.post-content {
+  h2 {
+    font-size: 1.8em;
+    margin-top: 2em;
+    color: var(--primary-color);
+  }
+  
+  h3 {
+    font-size: 1.4em;
+    margin-top: 1.5em;
+  }
+  
+  p {
+    margin-bottom: 1.5em;
+  }
+}
+
+// Add a subtle hover effect to links
+a {
+  transition: color 0.2s ease-in-out;
+  
+  &:hover {
+    color: var(--accent-color);
+  }
+}
+
+// Style code blocks
+pre, code {
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+// Add a nice box shadow to images
+img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+} 
