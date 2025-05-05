@@ -1,7 +1,8 @@
 title: My Personal Blog
-description: Welcome to my personal blog where I share my thoughts and experiences
-url: "" # Leave empty for now, we'll update it when you set up your custom domain
-author: Valeria
+description: Welcome to my personal blog where I share my thoughts, experiences, and insights about technology, personal development, and life experiences.
+url: "https://valeriiakuka.com"
+baseurl: "" # the subpath of your site, e.g. /blog
+author: Valeria Kuka
 email: # Add your email if you want to display it
 theme: minima
 
@@ -10,24 +11,47 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
-# Social links (uncomment and fill what you want to show)
+# Social links
 social_links:
-#  twitter: your-twitter-handle
-#  github: your-github-handle
-#  linkedin: your-linkedin-handle
-
-# Google Analytics (uncomment and add your GA ID if you want to use it)
-# google_analytics: UA-XXXXXXXX-X
+  twitter: valeriia_kuka
+  github: kavaivaleri
+  linkedin: valeriia-kuka
 
 # SEO settings
 twitter:
-  username: # Add your Twitter handle (without @)
-  card: summary
+  username: valeriia_kuka
+  card: summary_large_image
 social:
-  name: Valeria # Your full name
+  name: Valeria Kuka
   links:
-    # Add your social profile links here
-    # - https://twitter.com/your-twitter-handle
-    # - https://github.com/your-github-handle
-    # - https://linkedin.com/in/your-linkedin-handle 
+    - https://twitter.com/valeriia_kuka
+    - https://github.com/kavaivaleri
+    - https://linkedin.com/in/valeriia-kuka
+
+# SEO Optimization
+lang: en
+locale: en_US
+logo: /assets/images/logo.png # You'll need to add this image
+author_image: /assets/images/author.jpg # You'll need to add this image
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/default-social.png # You'll need to add this image
+      
+# Analytics
+google_analytics: # Your GA4 ID when you're ready
+google_site_verification: # Your Google verification meta tag
+
+# Optimization
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: [development]
+  blanklines: false
+  profile: false
+  startings: [html, head, body] 
