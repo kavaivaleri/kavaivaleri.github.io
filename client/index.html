@@ -11,6 +11,18 @@
     <meta property="og:title" content="Valeriia Kuka - AI/ML Content Strategist" />
     <meta property="og:description" content="Turning cutting-edge AI/ML research into clear, practical guides. Expert in content strategy and technical writing." />
     <meta property="og:type" content="website" />
+    
+    <!-- GitHub Pages SPA routing support -->
+    <script>
+      // Handle redirects from 404.html for client-side routing
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

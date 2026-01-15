@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      // GitHub Pages SPA redirect trick
+      // This script preserves the path and redirects to index.html
+      // The path will be read by index.html and the router will handle it
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+      
+      // Store the current path and redirect to index.html
+      sessionStorage.redirect = location.href;
+      location.replace(
+        location.pathname.split('/').slice(0, -1).join('/') + '/index.html' +
+        location.search +
+        (location.search ? '&' : '?') +
+        'p=' + location.pathname.slice(1)
+      );
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
+

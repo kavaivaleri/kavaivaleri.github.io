@@ -24,9 +24,25 @@ export default defineConfig({
     },
   },
   root: path.resolve(import.meta.dirname, "client"),
+  // Base path for GitHub Pages
+  // Use '/' for custom domain (valeriiakuka.com)
+  // Use '/repository-name/' if deploying to username.github.io/repository-name
+  base: "/",
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    // Generate source maps for better debugging
+    sourcemap: false,
+    // Optimize chunk size
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['wouter'],
+          ui: ['@radix-ui/react-slot', 'class-variance-authority', 'clsx', 'tailwind-merge'],
+        },
+      },
+    },
   },
   server: {
     fs: {

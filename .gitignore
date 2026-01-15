@@ -1,6 +1,71 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Replit
+.replit
+replit.nix
+.config/
+.upm/
+
+# Database
+*.db
+*.db-*
+
+# Testing
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Static site generator output (Jekyll site in _site)
+_site/
+
+# Python scripts (used for data processing)
+*.pyc
+__pycache__/
+.python-version
+
+# CSV data files
+*.csv
+
+# Attached assets (working files)
+attached_assets/
+
+# Server build (not needed for static deployment)
+# Keep server/ directory for local development but exclude from deployment
