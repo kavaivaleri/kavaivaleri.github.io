@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
-import type { Publication } from '@shared/schema';
+import type { Publication } from '@shared/types';
 import { imageExtractor } from './image-extractor.js';
 
 interface PublicationMetadata {

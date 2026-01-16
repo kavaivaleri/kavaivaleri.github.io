@@ -2,7 +2,7 @@ import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { type Project } from "@shared/schema";
+import { type Project } from "@shared/types";
 import { Link } from "wouter";
 
 interface ProjectCardProps {

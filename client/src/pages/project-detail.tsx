@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import MarkdownRenderer from "@/components/markdown-renderer";
-import { type Project } from "@shared/schema";
+import { type Project } from "@shared/types";
 
 export default function ProjectDetail() {
   const [, params] = useRoute("/project/:id");

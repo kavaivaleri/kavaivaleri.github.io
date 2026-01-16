@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertBlogPostSchema } from "@shared/schema";
+import { type InsertBlogPost } from "@shared/types";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -173,7 +173,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Create a new blog post
   app.post("/api/blog-posts", async (req, res) => {
     try {
-      const validatedData = insertBlogPostSchema.parse(req.body);
+      // Basic validation schema for blog post creation
+      const blogPostSchema = z.object({
+        title: z.string().min(1),
+        slug: z.string().min(1),
+        excerpt: z.string(),
+        content: z.string(),
+        tags: z.array(z.string()),
+        readTime: z.string(),
+        published: z.string().optional(),
+        imageUrl: z.string().nullable().optional(),
+      });
+      
+      const validatedData = blogPostSchema.parse(req.body) as InsertBlogPost;
       const post = await storage.createBlogPost(validatedData);
       res.status(201).json({ message: "Blog post created successfully", post });
     } catch (error) {

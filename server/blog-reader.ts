@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
-import type { BlogPost } from '@shared/schema';
+import type { BlogPost } from '@shared/types';
 
 interface BlogMetadata {
   title: string;

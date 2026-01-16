@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { type Project } from "@shared/schema";
+import { type Project } from "@shared/types";
 import ProjectCard from "./project-card";
 import { Skeleton } from "@/components/ui/skeleton";
 

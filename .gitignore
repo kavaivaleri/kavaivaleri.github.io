@@ -57,15 +57,20 @@ coverage/
 _site/
 
 # Python scripts (used for data processing)
+*.py
 *.pyc
 __pycache__/
 .python-version
+!requirements.txt
 
 # CSV data files
 *.csv
 
 # Attached assets (working files)
 attached_assets/
+
+# Replit
+replit.md
 
 # Server build (not needed for static deployment)
 # Keep server/ directory for local development but exclude from deployment

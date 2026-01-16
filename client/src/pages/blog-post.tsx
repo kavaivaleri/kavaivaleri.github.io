@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import MarkdownRenderer from "@/components/markdown-renderer";
-import { type BlogPost } from "@shared/schema";
+import { type BlogPost } from "@shared/types";
 
 export default function BlogPostPage() {
   const [, params] = useRoute("/blog/:slug");

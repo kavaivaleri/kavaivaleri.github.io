@@ -1,7 +1,7 @@
 import { Calendar, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { type BlogPost } from "@shared/schema";
+import { type BlogPost } from "@shared/types";
 import { Link } from "wouter";
 
 interface BlogCardProps {

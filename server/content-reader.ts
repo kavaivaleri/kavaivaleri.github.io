@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
-import type { Project } from '@shared/schema';
+import type { Project } from '@shared/types';
 
 interface ProjectMetadata {
   title: string;

@@ -4,7 +4,7 @@ import { ExternalLink, Search, Calendar, Building2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import type { Publication } from "@shared/schema";
+import type { Publication } from "@shared/types";
 
 export default function Publications() {
   const [searchQuery, setSearchQuery] = useState("");

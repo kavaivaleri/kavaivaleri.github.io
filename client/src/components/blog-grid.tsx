@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { type BlogPost } from "@shared/schema";
+import { type BlogPost } from "@shared/types";
 import BlogCard from "./blog-card";
 import { Skeleton } from "@/components/ui/skeleton";
 

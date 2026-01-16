@@ -1,4 +1,4 @@
-import { type Project, type InsertProject, type BlogPost, type InsertBlogPost, type Publication, type InsertPublication } from "@shared/schema";
+import { type Project, type InsertProject, type BlogPost, type InsertBlogPost, type Publication, type InsertPublication } from "@shared/types";
 import { randomUUID } from "crypto";
 import { blogReader } from "./blog-reader";
 import { contentReader } from "./content-reader";
