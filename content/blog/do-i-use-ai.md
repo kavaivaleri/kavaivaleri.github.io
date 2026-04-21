@@ -1,7 +1,7 @@
 ---
-title: "Do I Use AI? And Striving to Expand Existing Workflows"
+title: "How I Use AI in My Work"
 slug: "do-i-use-ai"
-excerpt: "My goals for joining the AI Dev Tools Zoomcamp"
+excerpt: "A short note on how AI fits into my day-to-day work and why I wanted to study it more seriously."
 readTime: "2 min read"
 published: true
 tags: ["AI Tools", "Learning", "Career Development"]
@@ -9,15 +9,15 @@ image: "/images/blog/laptop.png"
 publishedAt: "2025-11-28"
 ---
 
-**"Are you actually using AI in your everyday life?"**
+**"Do you actually use AI in your everyday work?"**
 
-Short answer: yes. A lot.
+Short answer: yes.
 
 I started using AI tools around the time ChatGPT first came out. Back then, I mainly used it as a marketer: small content edits, alternative headlines, structure suggestions. It was helpful, but also quite limited and prone to obvious errors.
 
-Fast-forward to today: the tools are much more powerful, but one thing hasn't changed — I still treat AI as a **companion**, not a full replacement. Even if you hire a human, you still review their work. Same with AI: it can speed you up, but you stay responsible for the final output.
+The tools are much more capable now, but one thing hasn't changed: I still treat AI as a tool I work with, not something I hand work over to. It can speed things up, but I'm still responsible for the final result.
 
-Because I work in startup environments and often wear "technical" hats (think technical SEO, website updates, landing pages), I decided to lean into this and invest in my skills. I joined **AI Dev Tools Zoomcamp**, a course that teaches developers to work more productively with AI: coding assistants, agents, automation tools, all of that.
+Because I work in startup environments and often end up doing semi-technical work too, I wanted to understand these tools more seriously. I joined **AI Dev Tools Zoomcamp** to learn more about coding assistants, agents, and automation in a more structured way.
 
 I already use AI to:
 
@@ -25,4 +25,4 @@ I already use AI to:
 - Generate small scripts for technical SEO (for example, adding or updating structured data)
 - Experiment with how websites are built and styled, using AI to suggest code changes and then reverse-engineering what happened
 
-On AI Dev Tools Zoomcamp, the module that interests me the most is [building an AI coding agent](https://github.com/DataTalksClub/ai-dev-tools-zoomcamp/tree/main/04-build-coding-agent). I hope it will help me understand how agents are built and how I can use them in my work. Since I've already tried using LLMs with an API, I'm curious how agentic features can expand their capabilities and what I would be able to build with them.
+The part I'm most curious about is [building an AI coding agent](https://github.com/DataTalksClub/ai-dev-tools-zoomcamp/tree/main/04-build-coding-agent). I've already experimented a little with LLM APIs, but I want a better understanding of how these systems are built and where they're genuinely useful in real work.

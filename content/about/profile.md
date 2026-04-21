@@ -1,7 +1,8 @@
 ---
-name: "Valeria Kuka"
-title: "Content Manager @ DataTalks.Club"
-email: "kavaivaleri@gmail.com"
+name: "Valeriia Kuka"
+pronouns: "She / Her"
+title: "Content Manager & Technical Writer | Building and growing AI/ML educational content"
+email: "valeriia.kuka@gmail.com"
 location: "Spain"
 linkedin: "https://www.linkedin.com/in/valeriia-kuka"
 twitter: "https://twitter.com/valeria_kuka"
@@ -9,23 +10,27 @@ twitter: "https://twitter.com/valeria_kuka"
 
 # About
 
-I'm a content manager and technical writer specializing in AI/ML. I write, edit, and grow content to help people learn about machine learning, prompt engineering, and AI safety. I'm curious about how we explain and scale technical knowledge.
+I'm a content manager and technical writer working across AI and machine learning. I write, edit, and grow educational content that helps people understand technical ideas without making them feel heavier than they need to be.
+
+My work usually sits somewhere between editorial strategy, technical writing, SEO, and audience growth. Over the past few years, I've led content across blogs, newsletters, docs, and social channels for AI-focused teams, with a consistent focus on clarity, usefulness, and steady long-term growth.
+
+I've written 98+ articles covering AI/ML research, practical guides, company profiles, and industry shifts. I’m especially interested in bridging the gap between technical research and practical application, and in building content systems that help technical communities learn well.
 
 ## Experience
 
 **Content Manager @ DataTalks.Club** (May 2025 - Present)
-- Leading content strategy across social media, blog, and newsletters
-- Contributed to 7,300 registrations for an upcoming free course in 2 months
+- Working across content strategy for social media, blog, and newsletters
+- Contributed to 7,300 registrations for an upcoming free course in two months
 
 **Head of Content @ Learn Prompting** (August 2024 - April 2025)
-- Owned content strategy for docs, blog, newsletter, and social media, driving +98% organic users, +65% sessions, and +25-45pp engagement gains in 9 months
+- Led content strategy across docs, blog, newsletter, and social media, contributing to +98% organic users, +65% sessions, and +25-45pp engagement gains in nine months
 - Managed 3-5 freelance writers and authored core content
-- Founded the Learn Prompting Newsletter, achieving 35-40% open rates and 4-6% CTR
-- Executed SEO strategy that drove record traffic to /courses/ in March 2025
+- Started the Learn Prompting newsletter, reaching 35-40% open rates and 4-6% CTR
+- Ran SEO work that helped /courses/ reach record traffic in March 2025
 - Grew social reach (+12% Twitter, +75% LinkedIn) with new content formats
 
 **Contributing Editor @ TuringPost** (February 2023 - June 2024)
-- Managed end-to-end social media strategy for Twitter and LinkedIn, making them the 3rd-largest subscriber source
+- Managed social strategy for Twitter and LinkedIn, helping them become the third-largest subscriber source
 - Growth metrics: Twitter 46K ➡️ 60K (+30%); LinkedIn 2.6K ➡️ 4.6K (+76%)
 - Authored and co-authored technical explainers on Transformers, RAG, Chain-of-Thought, and company profiles
 - Earned recognition when Yann LeCun endorsed my JEPA explainer as an "excellent blog post"

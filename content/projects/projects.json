@@ -1,0 +1,83 @@
+[
+  {
+    "slug": "datatalks-club-content",
+    "title": "DataTalks.Club Content Programs",
+    "description": "Led cross-channel content for course launches, social, and newsletters with a focus on technical clarity and measurable demand generation.",
+    "category": "Editorial Strategy",
+    "year": "2025 to present",
+    "featured": true,
+    "technologies": ["Content Strategy", "Newsletter", "Social Media", "Analytics"],
+    "highlights": [
+      "Contributed to 7,300 registrations for an upcoming free course in two months.",
+      "Built campaigns that connected long-form content, newsletters, and social distribution.",
+      "Worked across editorial planning, launches, and performance analysis."
+    ],
+    "links": [
+      {
+        "label": "DataTalks.Club",
+        "url": "https://datatalks.club/"
+      }
+    ]
+  },
+  {
+    "slug": "learn-prompting-content-strategy",
+    "title": "Learn Prompting Content Strategy",
+    "description": "Owned the editorial system for docs, blog, newsletter, and social channels for an AI education platform serving millions of users.",
+    "category": "Content Strategy",
+    "year": "2024 to 2025",
+    "featured": true,
+    "image": "/images/projects/technical-content-writing-cover.png",
+    "technologies": ["SEO", "Editorial Ops", "Technical Writing", "Team Leadership"],
+    "highlights": [
+      "Drove +98% organic users and +65% sessions in nine months.",
+      "Launched the Learn Prompting newsletter with 35 to 40 percent open rates.",
+      "Managed freelance writers and built repeatable contributor workflows."
+    ],
+    "links": [
+      {
+        "label": "Learn Prompting",
+        "url": "https://learnprompting.org/"
+      }
+    ]
+  },
+  {
+    "slug": "turingpost-technical-explainers",
+    "title": "Turing Post Technical Explainers",
+    "description": "Produced deep but accessible writing on foundation models, RAG, multimodal systems, and AI companies for a technical audience.",
+    "category": "Technical Writing",
+    "year": "2023 to 2024",
+    "featured": false,
+    "technologies": ["Research Translation", "AI/ML", "Editing", "Content Development"],
+    "highlights": [
+      "Authored explainers on JEPA, transformers, RAG, Chain-of-Thought, and company profiles.",
+      "Earned recognition when Yann LeCun endorsed the JEPA explainer.",
+      "Helped make social channels the third-largest subscriber source."
+    ],
+    "links": [
+      {
+        "label": "Turing Post",
+        "url": "https://www.turingpost.com/"
+      }
+    ]
+  },
+  {
+    "slug": "thesequence-community-growth",
+    "title": "TheSequence Community Growth",
+    "description": "Built and refined a data-informed social content engine for a machine learning community from the ground up.",
+    "category": "Community Building",
+    "year": "2021 to 2023",
+    "featured": false,
+    "technologies": ["Community Growth", "Content Formats", "Distribution", "Reporting"],
+    "highlights": [
+      "Grew Twitter from 500 to 46,000 followers.",
+      "Built LinkedIn presence from zero to 2,600 followers.",
+      "Tested new content formats and tracked weekly KPIs to guide direction."
+    ],
+    "links": [
+      {
+        "label": "TheSequence",
+        "url": "https://www.thesequence.media/"
+      }
+    ]
+  }
+]

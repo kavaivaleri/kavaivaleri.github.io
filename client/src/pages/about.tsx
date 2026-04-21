@@ -148,7 +148,7 @@ export default function About() {
                 className="bg-pixel-teal text-white px-8 py-3 font-semibold shadow-pixel hover:shadow-pixel-hover transform hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
                 asChild
               >
-                <a href="mailto:kavaivaleri@gmail.com">
+                <a href="mailto:valeriia.kuka@gmail.com">
                   <Mail className="w-4 h-4 mr-2" />
                   Email Me
                 </a>

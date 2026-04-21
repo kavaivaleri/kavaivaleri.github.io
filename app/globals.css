@@ -1,0 +1,178 @@
+@import "highlight.js/styles/github-dark.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f5f1ec;
+  --foreground: #231f1c;
+  --surface: rgba(250, 248, 244, 0.92);
+  --accent: #7f5967;
+  --accent-soft: #ece2e5;
+  --accent-strong: #5f766d;
+  --muted: #675f59;
+  --border: rgba(35, 31, 28, 0.1);
+  --pixel-pink: #7f5967;
+  --pixel-light-pink: #ece2e5;
+  --pixel-teal: #5f766d;
+  --pixel-purple: #5b4e55;
+  --pixel-dark: #231f1c;
+  --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at top left, rgba(127, 89, 103, 0.09), transparent 30rem),
+    radial-gradient(circle at right 12%, rgba(95, 118, 109, 0.08), transparent 28rem),
+    linear-gradient(180deg, #f8f5f1 0%, #f5f1ec 45%, #f2eee9 100%);
+}
+
+::selection {
+  background: rgba(127, 89, 103, 0.18);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .surface {
+    @apply rounded-[1.125rem] border backdrop-blur-sm;
+    background: var(--surface);
+    border-color: var(--border);
+    box-shadow:
+      0 1px 2px rgba(35, 31, 28, 0.04),
+      0 12px 24px rgba(35, 31, 28, 0.04);
+  }
+
+  .section-gap {
+    @apply py-10 sm:py-14;
+  }
+
+  .eyebrow {
+    @apply mb-3 inline-flex rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em];
+    border-color: rgba(127, 89, 103, 0.14);
+    background: rgba(236, 226, 229, 0.7);
+    color: var(--pixel-purple);
+  }
+
+  .kicker {
+    @apply text-sm uppercase tracking-[0.22em] text-muted;
+  }
+
+  .tag-pill {
+    @apply inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium;
+    border-color: rgba(35, 31, 28, 0.08);
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--muted);
+  }
+
+  .link-chip {
+    @apply inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-medium transition;
+    border-color: rgba(35, 31, 28, 0.1);
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--pixel-dark);
+  }
+
+  .link-chip:hover {
+    border-color: rgba(127, 89, 103, 0.2);
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .button-primary {
+    @apply inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition;
+    background: #2f2926;
+    color: white;
+    border-color: rgba(35, 31, 28, 0.28);
+  }
+
+  .button-primary:hover {
+    background: #1f1a18;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--pixel-dark);
+    border-color: rgba(35, 31, 28, 0.1);
+  }
+
+  .button-secondary:hover {
+    border-color: rgba(127, 89, 103, 0.16);
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.75);
+  }
+
+  .playful-card {
+    @apply transition duration-200;
+  }
+
+  .playful-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 2px rgba(35, 31, 28, 0.05),
+      0 16px 28px rgba(35, 31, 28, 0.06);
+  }
+
+  .pixel-frame {
+    border: 1px solid rgba(35, 31, 28, 0.1);
+    box-shadow: none;
+  }
+
+  .candy-gradient {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.1)),
+      linear-gradient(90deg, rgba(236, 226, 229, 0.7), rgba(242, 238, 233, 0.5));
+  }
+
+  .card-link {
+    @apply text-sm font-semibold;
+    color: var(--accent);
+  }
+
+  .card-link:hover {
+    color: var(--pixel-dark);
+  }
+
+  .article-prose {
+    @apply prose prose-neutral max-w-none prose-headings:font-display prose-headings:text-slate-950 prose-p:text-slate-700 prose-a:no-underline prose-strong:text-slate-950 prose-code:rounded prose-code:bg-stone-100 prose-code:px-1 prose-code:py-0.5 prose-code:text-[0.9em] prose-code:before:content-none prose-code:after:content-none prose-pre:border prose-pre:border-stone-800 prose-pre:bg-stone-950 prose-pre:text-stone-100 prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-slate-500 prose-img:rounded-[1.25rem] prose-img:border prose-img:border-stone-200;
+  }
+
+  .article-prose a {
+    color: var(--accent);
+  }
+
+  .article-prose a:hover {
+    color: var(--pixel-dark);
+  }
+
+  .article-prose blockquote {
+    border-left-color: rgba(95, 118, 109, 0.45);
+    background: rgba(255, 255, 255, 0.45);
+    padding: 0.875rem 1rem;
+    border-radius: 0.875rem;
+  }
+}

@@ -1,258 +1,92 @@
-# Valeriia Kuka - Personal Website
+# Valeria Kuka Portfolio
 
-A modern, fully static personal website built with React, Vite, and TailwindCSS. Optimized for GitHub Pages deployment with client-side routing support.
+A static Next.js portfolio site for `valeriiakuka.com`, built for GitHub Pages deployment.
 
-## 🚀 Features
+## Stack
 
-- **100% Static**: No server required, deploys to GitHub Pages
-- **Fast Performance**: Optimized build with code splitting
-- **SPA Routing**: Client-side routing with GitHub Pages support
-- **Content Management**: Markdown-based blog posts and publications
-- **Auto Deploy**: GitHub Actions workflow for automatic deployment
-- **Custom Domain**: Configured for valeriiakuka.com
+- Next.js App Router with `output: "export"`
+- Tailwind CSS
+- Markdown/MDX-style content loading with `gray-matter` and `next-mdx-remote`
+- GitHub Actions deployment to Pages
 
-## 📁 Project Structure
+## Structure
 
-```
-personal-website/
-├── client/                    # React frontend application
-│   ├── src/                   # Source code
-│   │   ├── components/        # React components
-│   │   ├── pages/             # Page components
-│   │   ├── lib/               # Utilities and helpers
-│   │   └── main.tsx           # Application entry point
-│   ├── public/                # Static assets
-│   │   ├── api/               # Generated JSON files (auto-generated)
-│   │   ├── images/            # Images
-│   │   ├── 404.html           # SPA routing fallback
-│   │   ├── .nojekyll          # Prevent Jekyll processing
-│   │   └── CNAME              # Custom domain configuration
-│   └── index.html             # HTML template
-├── content/                   # Markdown content
-│   ├── blog/                  # Blog posts
-│   ├── publications/          # Publications
-│   └── about/                 # About page content
-├── scripts/                   # Build scripts
-│   └── generate-static-data.js  # Markdown to JSON converter
-├── server/                    # Express server (dev only)
-├── .github/workflows/         # GitHub Actions
-│   └── deploy.yml             # Deployment workflow
-└── dist/public/               # Build output (generated)
+```text
+app/                      Next.js routes
+components/               Shared UI components
+content/about/            CV and profile content
+content/blog/             Blog posts in .md or .mdx
+content/publications/     External publication entries
+content/projects/         Project data
+lib/                      Content loaders and helpers
+public/                   Images, CNAME, and static assets
 ```
 
-## 🛠️ Tech Stack
+## Content editing
 
-- **Frontend**: React 18, TypeScript
-- **Build Tool**: Vite
-- **Styling**: TailwindCSS
-- **Routing**: Wouter (client-side)
-- **UI Components**: Radix UI
-- **Data Fetching**: TanStack Query
-- **Deployment**: GitHub Pages + GitHub Actions
+### About / CV
 
-## 📝 Content Management
+Edit `content/about/profile.md`.
 
-### Blog Posts
+### Blog posts
 
-Create new blog posts in `content/blog/`:
+Create a file in `content/blog/` using `.md` or `.mdx`:
 
-```markdown
+```md
 ---
-title: "Your Post Title"
-slug: "your-post-slug"
-excerpt: "Brief description"
-publishedAt: "2026-01-15"
-tags: [tag1, tag2]
+title: "Article Title"
+slug: "article-title"
+excerpt: "Short summary for cards and SEO"
+publishedAt: "2026-04-20"
+tags: ["AI Tools", "Learning"]
 published: true
 image: "/images/blog/cover.png"
-readTime: "5 min read"
+readTime: "4 min read"
 ---
 
-Your content here...
+Your article content here.
 ```
 
 ### Publications
 
-Create new publications in `content/publications/`:
+Create a file in `content/publications/`:
 
-```markdown
+```md
 ---
-title: "Publication Title"
+title: "Publication title"
+description: "Short description"
 url: "https://example.com/article"
-description: "Brief description"
-publication: "Publication Name"
-category: "Category"
-publishedAt: "2026-01-15"
-featured: true
-priority: 1
+publication: "Publication name"
+category: "Article"
+publishedAt: "2026-04-20"
+featured: false
 ---
 ```
 
-### About Page
+### Projects
 
-Edit `content/about/profile.md`:
+Edit `content/projects/projects.json`.
 
-```markdown
----
-name: "Your Name"
-title: "Your Title"
-email: "your@email.com"
-location: "Your Location"
-linkedin: "https://linkedin.com/in/yourprofile"
-twitter: "https://twitter.com/yourhandle"
----
-
-Your bio content...
-```
-
-## 🚀 Development
-
-### Prerequisites
-
-- Node.js 20+
-- npm
-
-### Setup
+## Local development
 
 ```bash
-# Install dependencies
 npm install
-
-# Generate static data from markdown
-npm run generate:static
-
-# Start development server
 npm run dev
 ```
 
-The development server runs on `http://localhost:5000` with hot module replacement.
+Local site: `http://localhost:3000`
 
-## 📦 Building for Production
-
-Build the static site:
+## Checks
 
 ```bash
-npm run build:static
+npm run check
+npm run build
 ```
 
-This command:
-1. Generates JSON files from markdown content
-2. Builds the React app with Vite
-3. Outputs everything to `dist/public/`
+`npm run build` exports the static site to `out/`.
 
-### Test Production Build Locally
+## Deployment
 
-```bash
-# After building
-npx serve dist/public
-```
+The site deploys automatically from `.github/workflows/deploy.yml`.
 
-## 🌐 Deployment
-
-### Automatic Deployment (GitHub Actions)
-
-The site automatically deploys to GitHub Pages when you push to the `main` branch.
-
-**Setup Steps:**
-
-1. **Enable GitHub Pages**:
-   - Go to repository Settings → Pages
-   - Source: GitHub Actions
-   - Branch will be deployed automatically
-
-2. **Configure Custom Domain** (if using):
-   - Update `client/public/CNAME` with your domain
-   - Configure DNS:
-     - Add CNAME record: `valeriiakuka.com` → `yourusername.github.io`
-     - Or use GitHub's IP addresses for A records
-
-3. **Push to Deploy**:
-   ```bash
-   git push origin main
-   ```
-
-The GitHub Actions workflow will:
-- Install dependencies
-- Generate static data
-- Build the site
-- Deploy to GitHub Pages
-
-### Manual Deployment
-
-```bash
-# Build the site
-npm run build:static
-
-# Deploy contents of dist/public/ to your hosting service
-```
-
-## 🎨 Customization
-
-### Styling
-
-- Edit TailwindCSS configuration in `tailwind.config.ts`
-- Global styles in `client/src/index.css`
-- Component styles using Tailwind utility classes
-
-### Components
-
-- UI components in `client/src/components/`
-- Page components in `client/src/pages/`
-
-### Configuration
-
-- Vite config: `vite.config.ts`
-- TypeScript config: `tsconfig.json`
-- PostCSS config: `postcss.config.js`
-
-## 📋 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build app and server
-- `npm run build:static` - Generate static data and build for deployment
-- `npm run generate:static` - Generate JSON files from markdown
-- `npm run start` - Start production server (not needed for static deployment)
-- `npm run check` - Type check TypeScript
-
-## 🔧 How Static Deployment Works
-
-1. **Content Storage**: All content is in markdown files in `content/`
-2. **Build Time**: `generate-static-data.js` converts markdown to JSON
-3. **Runtime**: React app fetches from static JSON files
-4. **Routing**: GitHub Pages serves `404.html` for unknown routes, which redirects to `index.html` preserving the path
-5. **Client Router**: Wouter handles routing on the client side
-
-## 🐛 Troubleshooting
-
-### Routes not working on GitHub Pages
-
-- Ensure `404.html` exists in `client/public/`
-- Verify `.nojekyll` file exists
-- Check base path in `vite.config.ts` (should be `/` for custom domain)
-
-### Images not loading
-
-- Images must be in `client/public/images/`
-- Reference as `/images/filename.png` in markdown
-- Run `npm run build:static` to copy images
-
-### Build fails
-
-- Run `npm ci` to clean install dependencies
-- Check Node.js version (requires 20+)
-- Clear cache: `rm -rf node_modules dist && npm install`
-
-## 📄 License
-
-MIT
-
-## 👤 Author
-
-**Valeriia Kuka**
-- Website: [valeriiakuka.com](https://valeriiakuka.com)
-- LinkedIn: [linkedin.com/in/valeriiakuka](https://linkedin.com/in/valeriiakuka)
-
----
-
-Built with ❤️ using React, Vite, and TailwindCSS
-
+GitHub Pages should be configured to use GitHub Actions, and the custom domain is carried through `public/CNAME`.
