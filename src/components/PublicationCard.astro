@@ -1,0 +1,21 @@
+---
+import type { Publication } from "../lib/content";
+import { formatDate } from "../lib/utils";
+
+type Props = {
+  publication: Publication;
+};
+
+const { publication } = Astro.props;
+---
+
+<article class="surface card compact-card">
+  <div class="card-body">
+    <p class="kicker">
+      {publication.publication} / {publication.category} / {formatDate(publication.publishedAt)}
+    </p>
+    <h2><a href={publication.url} target="_blank" rel="noreferrer">{publication.title}</a></h2>
+    <p>{publication.description}</p>
+    <a class="card-link" href={publication.url} target="_blank" rel="noreferrer">Open article</a>
+  </div>
+</article>

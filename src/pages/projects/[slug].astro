@@ -1,0 +1,68 @@
+---
+import StructuredData from "../../components/StructuredData.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getProjectBySlug, getProjects } from "../../lib/content";
+import { projectJsonLd } from "../../lib/seo";
+
+export function getStaticPaths() {
+  return getProjects().map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const project = getProjectBySlug(Astro.params.slug ?? "");
+
+if (!project) {
+  return Astro.redirect("/404/");
+}
+---
+
+<BaseLayout title={project.title} description={project.description} image={project.image}>
+  <StructuredData data={projectJsonLd(project)} />
+
+  <article class="section">
+    <div class="shell">
+      <a class="card-link" href="/projects/">Back to work</a>
+      <header class="article-header" style="margin-top: 1.5rem;">
+        <p class="eyebrow">{project.category} / {project.year}</p>
+        <h1>{project.title}</h1>
+        <p class="lead">{project.description}</p>
+      </header>
+
+      {project.image ? (
+        <div class="surface article-hero">
+          <img src={project.image} alt="" loading="eager" />
+        </div>
+      ) : null}
+
+      <div class="split" style="margin-top: 2rem;">
+        <div class="surface card">
+          <div class="card-body">
+            <h2>Highlights</h2>
+            <ul class="prose">
+              {project.highlights.map((highlight) => <li>{highlight}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        <aside class="surface sidebar">
+          <h2>Scope</h2>
+          <ul class="tag-list">
+            {project.technologies.map((item) => <li>{item}</li>)}
+          </ul>
+
+          {project.links.length ? (
+            <>
+              <h2 style="margin-top: 1.5rem;">Links</h2>
+              <ul class="sidebar-list">
+                {project.links.map((link) => (
+                  <li><a href={link.url} target="_blank" rel="noreferrer">{link.label}</a></li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+        </aside>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

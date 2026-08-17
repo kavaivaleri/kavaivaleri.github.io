@@ -1,0 +1,20 @@
+---
+import { siteConfig } from "../lib/site";
+---
+
+<header class="site-header">
+  <nav class="shell nav" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label={`${siteConfig.name} home`}>
+      {siteConfig.name}
+    </a>
+    <div class="nav-links">
+      {
+        siteConfig.nav.map((item) => (
+          <a href={item.href} class="nav-link">
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</header>

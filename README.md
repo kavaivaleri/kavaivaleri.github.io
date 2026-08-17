@@ -1,80 +1,45 @@
-# Valeria Kuka Portfolio
+# Valeriia Kuka Portfolio
 
-A static Next.js portfolio site for `valeriiakuka.com`, built for GitHub Pages deployment.
+A static Astro portfolio site for `valeriiakuka.com`, deployed to GitHub Pages.
 
 ## Stack
 
-- Next.js App Router with `output: "export"`
-- Tailwind CSS
-- Markdown/MDX-style content loading with `gray-matter` and `next-mdx-remote`
+- Astro with static output
+- Astro content collections for profile, notes, and publications
+- Plain CSS in `src/styles/global.css`
 - GitHub Actions deployment to Pages
 
 ## Structure
 
 ```text
-app/                      Next.js routes
-components/               Shared UI components
-content/about/            CV and profile content
-content/blog/             Blog posts in .md or .mdx
-content/publications/     External publication entries
-content/projects/         Project data
-lib/                      Content loaders and helpers
-public/                   Images, CNAME, and static assets
+src/pages/              Astro routes
+src/components/         Shared Astro components
+src/layouts/            Shared page layout
+src/content/about/      Profile and CV content
+src/content/notes/      Notes in Markdown
+src/content/publications/ External publication entries
+src/content/projects/   Project data
+public/                 Images, CNAME, feed, robots, and sitemap
 ```
 
-## Content editing
+## Content Editing
 
-### About / CV
+Edit the main profile and CV in `src/content/about/profile.md`.
 
-Edit `content/about/profile.md`.
+Add notes as Markdown files in `src/content/notes/`.
 
-### Blog posts
+Add external publication entries as Markdown files in `src/content/publications/`.
 
-Create a file in `content/blog/` using `.md` or `.mdx`:
+Edit project cards and project pages in `src/content/projects/projects.json`.
 
-```md
----
-title: "Article Title"
-slug: "article-title"
-excerpt: "Short summary for cards and SEO"
-publishedAt: "2026-04-20"
-tags: ["AI Tools", "Learning"]
-published: true
-image: "/images/blog/cover.png"
-readTime: "4 min read"
----
-
-Your article content here.
-```
-
-### Publications
-
-Create a file in `content/publications/`:
-
-```md
----
-title: "Publication title"
-description: "Short description"
-url: "https://example.com/article"
-publication: "Publication name"
-category: "Article"
-publishedAt: "2026-04-20"
-featured: false
----
-```
-
-### Projects
-
-Edit `content/projects/projects.json`.
-
-## Local development
+## Local Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Local site: `http://localhost:3000`
+Local site: `http://localhost:4321`
 
 ## Checks
 
@@ -83,10 +48,4 @@ npm run check
 npm run build
 ```
 
-`npm run build` exports the static site to `out/`.
-
-## Deployment
-
-The site deploys automatically from `.github/workflows/deploy.yml`.
-
-GitHub Pages should be configured to use GitHub Actions, and the custom domain is carried through `public/CNAME`.
+`npm run build` exports the static site to `dist/`.

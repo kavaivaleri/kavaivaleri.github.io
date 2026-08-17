@@ -1,0 +1,39 @@
+---
+import { getEntry, render } from "astro:content";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getProfile } from "../lib/content";
+
+const profile = await getProfile();
+const aboutEntry = await getEntry("about", "profile");
+
+if (!aboutEntry) {
+  throw new Error("Missing profile content");
+}
+
+const { Content } = await render(aboutEntry);
+---
+
+<BaseLayout title="CV" description="CV and professional background for Valeriia Kuka.">
+  <section class="section">
+    <div class="shell split">
+      <article>
+        <p class="eyebrow">CV</p>
+        <h1>{profile.name}</h1>
+        <p class="lead">{profile.title}</p>
+        <div class="prose" style="margin-top: 2rem;">
+          <Content />
+        </div>
+      </article>
+
+      <aside class="surface sidebar">
+        <h2>Details</h2>
+        <ul class="sidebar-list">
+          <li><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+          <li><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
+          <li><span class="pill">{profile.location}</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

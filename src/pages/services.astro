@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getProfile } from "../lib/content";
+
+const profile = await getProfile();
+const services = [
+  {
+    id: "technical-content-strategy",
+    title: "Technical content strategy",
+    description:
+      "Positioning, topic architecture, editorial calendars, briefs, and recurring formats for AI/ML products and technical education.",
+    outcomes: [
+      "Clear content pillars for technical and business readers.",
+      "Roadmaps connected to launches, SEO, newsletters, and social distribution.",
+      "Editorial systems that make complex work easier to explain consistently.",
+    ],
+  },
+  {
+    id: "audience-and-newsletter-growth",
+    title: "Audience and newsletter growth",
+    description:
+      "Organic growth systems for technical newsletters, founder channels, community launches, and course funnels.",
+    outcomes: [
+      "Repeatable formats built around audience behavior.",
+      "Distribution loops across articles, newsletters, and social channels.",
+      "Performance reviews that turn analytics into next editorial moves.",
+    ],
+  },
+  {
+    id: "founder-led-content",
+    title: "Founder-led content and ghostwriting",
+    description:
+      "Technical narratives, launch posts, thought leadership, and social content that keep a founder's point of view sharp and credible.",
+    outcomes: [
+      "Posts and essays grounded in the founder's expertise.",
+      "Messaging that translates technical work without flattening it.",
+      "Editorial support for high-stakes launches and timely industry moments.",
+    ],
+  },
+  {
+    id: "editorial-operations",
+    title: "Editorial operations and AI-enabled workflows",
+    description:
+      "Practical systems for lean content teams: contributor workflows, review loops, style guides, and AI-assisted production.",
+    outcomes: [
+      "Writer onboarding, briefs, quality bars, and review processes.",
+      "Content migration, metadata, and SEO automation where useful.",
+      "Workflows that increase output without losing editorial judgment.",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Services"
+  description="Content strategy, audience growth, founder-led content, and editorial operations services for AI/ML companies."
+>
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <p class="eyebrow">Services</p>
+        <h1>Content systems for technical AI/ML teams</h1>
+        <p>
+          I help teams turn complex technical work into credible content programs
+          that can grow with the company.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="shell grid grid-2">
+      {services.map((service) => (
+        <article class="surface card" id={service.id}>
+          <div class="card-body">
+            <h2>{service.title}</h2>
+            <p>{service.description}</p>
+            <ul class="prose">
+              {service.outcomes.map((outcome) => <li>{outcome}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="cta-band">
+        <p class="eyebrow">Work together</p>
+        <h2>Need a technical content system with a clear editorial spine?</h2>
+        <div class="button-row">
+          <a class="button-secondary" href={`mailto:${profile.email}`}>Email me</a>
+          <a class="button-secondary" href="/projects/">View case studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

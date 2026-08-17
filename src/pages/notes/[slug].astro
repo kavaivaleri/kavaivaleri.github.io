@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from "astro:content";
+
+import StructuredData from "../../components/StructuredData.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { slugFromId } from "../../lib/content";
+import { articleJsonLd } from "../../lib/seo";
+import { formatDate } from "../../lib/utils";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("notes", ({ data }) => data.published !== false);
+
+  return entries.map((entry) => ({
+    params: { slug: slugFromId(entry.id) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const note = {
+  title: entry.data.title,
+  slug: slugFromId(entry.id),
+  description: entry.data.description ?? entry.data.excerpt ?? "",
+  body: entry.body,
+  publishedAt: entry.data.publishedAt,
+  tags: entry.data.tags ?? [],
+  readTime: entry.data.readTime,
+  image: entry.data.image ?? entry.data.imageUrl,
+};
+---
+
+<BaseLayout
+  title={note.title}
+  description={note.description}
+  image={note.image}
+  type="article"
+>
+  <StructuredData data={articleJsonLd(note)} />
+
+  <article class="section">
+    <div class="shell">
+      <a class="card-link" href="/notes/">Back to notes</a>
+      <header class="article-header" style="margin-top: 1.5rem;">
+        <p class="kicker">
+          {formatDate(note.publishedAt)}
+          {note.readTime ? ` / ${note.readTime}` : ""}
+        </p>
+        <h1>{note.title}</h1>
+        <p class="lead">{note.description}</p>
+      </header>
+
+      {note.image ? (
+        <div class="surface article-hero">
+          <img src={note.image} alt="" loading="eager" />
+        </div>
+      ) : null}
+
+      <div class="prose" style="margin-top: 2.25rem;">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

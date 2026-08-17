@@ -1,0 +1,48 @@
+---
+import { getEntry, render } from "astro:content";
+
+import StructuredData from "../components/StructuredData.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getProfile } from "../lib/content";
+import { personJsonLd } from "../lib/seo";
+
+const profile = await getProfile();
+const aboutEntry = await getEntry("about", "profile");
+
+if (!aboutEntry) {
+  throw new Error("Missing profile content");
+}
+
+const { Content } = await render(aboutEntry);
+---
+
+<BaseLayout
+  title="About"
+  description="Background, experience, skills, and contact details for Valeriia Kuka."
+>
+  <StructuredData data={personJsonLd(profile)} />
+
+  <section class="section">
+    <div class="shell split">
+      <article>
+        <p class="eyebrow">About</p>
+        <h1>{profile.name}</h1>
+        <p class="lead">{profile.title}</p>
+        <div class="prose" style="margin-top: 2rem;">
+          <Content />
+        </div>
+      </article>
+
+      <aside class="surface sidebar">
+        <h2>Contact</h2>
+        <ul class="sidebar-list">
+          <li><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+          <li><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
+          {profile.github ? <li><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a></li> : null}
+          {profile.twitter ? <li><a href={profile.twitter} target="_blank" rel="noreferrer">X / Twitter</a></li> : null}
+          <li><span class="pill">{profile.location}</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

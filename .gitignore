@@ -4,6 +4,7 @@ node_modules/
 .pnp.js
 
 # Build output
+.astro/
 .next/
 out/
 dist/
@@ -74,5 +75,4 @@ attached_assets/
 # Replit
 replit.md
 
-# Server build (not needed for static deployment)
-# Keep server/ directory for local development but exclude from deployment
+# Astro content and static assets are the source of truth for the site.

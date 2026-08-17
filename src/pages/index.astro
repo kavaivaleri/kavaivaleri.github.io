@@ -1,0 +1,139 @@
+---
+import NoteCard from "../components/NoteCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+import StructuredData from "../components/StructuredData.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  getFeaturedPublications,
+  getLatestNotes,
+  getProfile,
+  getProjects,
+} from "../lib/content";
+import { personJsonLd } from "../lib/seo";
+
+const profile = await getProfile();
+const projects = getProjects();
+const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
+const publications = await getFeaturedPublications(3);
+const notes = await getLatestNotes(3);
+
+const proofMetrics = [
+  {
+    value: "~65x",
+    label:
+      "organic audience growth from under 1,000 to 60,000 subscribers on a technical AI newsletter in 3 years",
+  },
+  {
+    value: "4M+",
+    label: "impressions on a single X post on a founder's account",
+  },
+  {
+    value: "Yann LeCun",
+    label: "reshared my JEPA explainer",
+  },
+  {
+    value: "+98%",
+    label: "organic users in 9 months on the Learn Prompting website",
+  },
+];
+
+const companies = [
+  "DataTalks.Club",
+  "Learn Prompting",
+  "Turing Post",
+  "TheSequence",
+  "AI Shipping Labs",
+  "HSE",
+];
+---
+
+<BaseLayout
+  title="Content strategy for technical AI/ML audiences"
+  description="Content strategy and growth for technical AI/ML audiences by Valeriia Kuka."
+>
+  <StructuredData data={personJsonLd(profile)} />
+
+  <section class="section">
+    <div class="shell hero-grid">
+      <div>
+        <p class="eyebrow">AI/ML content strategy</p>
+        <h1>Content strategy and growth for technical AI/ML audiences</h1>
+        <p class="lead">
+          I help AI companies explain complex products, build trusted technical
+          content, and grow their audiences through repeatable editorial systems.
+        </p>
+        <p class="lead muted">
+          Available for content strategy, editorial systems, and selected
+          technical content projects.
+        </p>
+        <div class="button-row">
+          <a class="button-primary" href="/projects/">View case studies</a>
+          <a class="button-secondary" href={`mailto:${profile.email}`}>Discuss a project</a>
+        </div>
+      </div>
+
+      <div class="profile-surface">
+        <img src="/images/photo2.jpg" alt={profile.name} loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="shell">
+      <div class="grid grid-3">
+        {proofMetrics.map((metric) => (
+          <div class="surface metric">
+            <strong>{metric.value}</strong>
+            <p>{metric.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="shell logo-strip">
+      <p class="kicker">Companies and teams I have worked with</p>
+      <div class="logo-grid">
+        {companies.map((company) => <div class="logo-item">{company}</div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <p class="eyebrow">Selected work</p>
+        <h2>Content systems, launches, and audience growth</h2>
+        <p>
+          A few projects where research, editorial judgment, and distribution
+          came together.
+        </p>
+      </div>
+      <div class="grid grid-3" style="margin-top: 1.5rem;">
+        {featuredProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <div class="button-row">
+        <a class="button-secondary" href="/projects/">View all work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="shell">
+      <div class="section-heading">
+        <p class="eyebrow">Writing</p>
+        <h2>Recent articles and notes</h2>
+      </div>
+      <div class="grid grid-2" style="margin-top: 1.5rem;">
+        <div class="grid">
+          {publications.map((publication) => <PublicationCard publication={publication} />)}
+        </div>
+        <div class="grid">
+          {notes.map((note) => <NoteCard note={note} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

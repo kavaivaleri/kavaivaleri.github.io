@@ -1,0 +1,28 @@
+---
+import ProjectCard from "../../components/ProjectCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getProjects } from "../../lib/content";
+
+const projects = getProjects();
+---
+
+<BaseLayout
+  title="Work"
+  description="Selected content strategy, social growth, newsletter, and technical writing projects by Valeriia Kuka."
+>
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <p class="eyebrow">Work</p>
+        <h1>Selected projects and case studies</h1>
+        <p>
+          Content strategy, editorial systems, technical writing, and audience
+          growth work across AI, data, and developer education.
+        </p>
+      </div>
+      <div class="grid grid-2" style="margin-top: 1.75rem;">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

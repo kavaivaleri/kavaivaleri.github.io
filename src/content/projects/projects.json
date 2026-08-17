@@ -1,0 +1,127 @@
+[
+  {
+    "slug": "datatalks-club-content",
+    "title": "DataTalks.Club Content Programs",
+    "description": "Led cross-channel content for course launches, social, and newsletters with a focus on technical clarity and measurable demand generation.",
+    "category": "Editorial Strategy",
+    "year": "2025 to present",
+    "featured": true,
+    "technologies": ["Content Strategy", "Newsletter", "Social Media", "Analytics"],
+    "highlights": [
+      "Contributed to 7,300 registrations for an upcoming free course in two months.",
+      "Built campaigns that connected long-form content, newsletters, and social distribution.",
+      "Worked across editorial planning, launches, and performance analysis."
+    ],
+    "links": [
+      {
+        "label": "DataTalks.Club",
+        "url": "https://datatalks.club/"
+      }
+    ]
+  },
+  {
+    "slug": "datatalksclub-social-growth",
+    "title": "DataTalks.Club Social Growth",
+    "description": "Rebuilt LinkedIn and X content strategy for a global data community, improving engagement quality, clicks, CTR, and course sign-ups in a four-month part-time role.",
+    "category": "Social Growth",
+    "year": "Jan to Apr 2023",
+    "featured": true,
+    "caseStudy": true,
+    "technologies": ["LinkedIn", "X/Twitter", "Newsletter", "Figma", "Community Growth"],
+    "highlights": [
+      "More than doubled LinkedIn engagement rate from 2.92% to 7.65%.",
+      "Grew clicks per post from 37 to 243 and CTR from 1.99% to 6.18%.",
+      "Helped drive 5,000+ MLOps Zoomcamp sign-ups in roughly 1.5 months."
+    ],
+    "links": [
+      {
+        "label": "DataTalks.Club",
+        "url": "https://datatalks.club/"
+      }
+    ]
+  },
+  {
+    "slug": "learn-prompting-content-strategy",
+    "title": "Learn Prompting Content Strategy",
+    "description": "Owned the editorial system for docs, blog, newsletter, and social channels for an AI education platform serving millions of users.",
+    "category": "Content Strategy",
+    "year": "2024 to 2025",
+    "featured": true,
+    "image": "/images/projects/technical-content-writing-cover.png",
+    "technologies": ["SEO", "Editorial Ops", "Technical Writing", "Team Leadership"],
+    "highlights": [
+      "Drove +98% organic users and +65% sessions in nine months.",
+      "Launched the Learn Prompting newsletter with 35 to 40 percent open rates.",
+      "Managed freelance writers and built repeatable contributor workflows."
+    ],
+    "links": [
+      {
+        "label": "Learn Prompting",
+        "url": "https://learnprompting.org/"
+      }
+    ]
+  },
+  {
+    "slug": "turingpost-technical-explainers",
+    "title": "Turing Post Editorial Work",
+    "description": "Contributed to a research-grounded body of AI/ML editorial work across explainers, company profiles, historical analysis, and curated research lists.",
+    "category": "Research Writing",
+    "year": "2023 to 2024",
+    "featured": true,
+    "caseStudy": true,
+    "technologies": ["Research Writing", "AI/ML", "Editorial Systems", "Primary Sources"],
+    "highlights": [
+      "Authored, co-authored, and contributed technical sections across multiple AI/ML editorial formats.",
+      "Earned public recognition when Yann LeCun amplified the JEPA explainer.",
+      "Connected the broader editorial body of work to premium subscription conversion."
+    ],
+    "links": [
+      {
+        "label": "Turing Post",
+        "url": "https://www.turingpost.com/"
+      }
+    ]
+  },
+  {
+    "slug": "turingpost-social-growth",
+    "title": "Turing Post Social Growth",
+    "description": "Continued the growth of the former TheSequence social account under the Turing Post brand, making social the newsletter's third-largest subscriber acquisition source.",
+    "category": "Social Distribution",
+    "year": "2023 to 2024",
+    "featured": true,
+    "caseStudy": false,
+    "technologies": ["X/Twitter", "LinkedIn", "Newsletter Growth", "Distribution", "Team Onboarding"],
+    "highlights": [
+      "Grew X/Twitter from 46,000 to 60,000 followers.",
+      "Grew LinkedIn from 2,600 to 4,600 followers.",
+      "Onboarded and mentored a social media intern to independent execution within one month."
+    ],
+    "links": [
+      {
+        "label": "Turing Post",
+        "url": "https://www.turingpost.com/"
+      }
+    ]
+  },
+  {
+    "slug": "thesequence-community-growth",
+    "title": "Growing TheSequence on X/Twitter",
+    "description": "Built a data-informed social growth engine for a research-grade AI/ML newsletter, taking X/Twitter from under 1,000 to 46,000 followers with near-zero paid budget.",
+    "category": "Social Growth",
+    "year": "2021 to 2023",
+    "featured": true,
+    "caseStudy": true,
+    "technologies": ["Social Strategy", "X/Twitter", "Newsletter Growth", "Analytics"],
+    "highlights": [
+      "Grew X/Twitter from under 1,000 to 46,000 followers.",
+      "Generated 20M+ impressions across the run.",
+      "Scaled monthly reach from 37K to 2.4M impressions."
+    ],
+    "links": [
+      {
+        "label": "TheSequence",
+        "url": "https://thesequence.substack.com/"
+      }
+    ]
+  }
+]

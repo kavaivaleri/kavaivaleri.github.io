@@ -1,0 +1,32 @@
+---
+import type { Note } from "../lib/content";
+import { formatDate } from "../lib/utils";
+
+type Props = {
+  note: Note;
+};
+
+const { note } = Astro.props;
+---
+
+<article class="surface card">
+  {note.image ? (
+    <a class="card-image" href={`/notes/${note.slug}/`} aria-label={note.title}>
+      <img src={note.image} alt="" loading="lazy" />
+    </a>
+  ) : null}
+  <div class="card-body">
+    <p class="kicker">
+      {formatDate(note.publishedAt)}
+      {note.readTime ? ` / ${note.readTime}` : ""}
+    </p>
+    <h2><a href={`/notes/${note.slug}/`}>{note.title}</a></h2>
+    <p>{note.description}</p>
+    {note.tags.length ? (
+      <ul class="tag-list" aria-label="Tags">
+        {note.tags.slice(0, 4).map((tag) => <li>{tag}</li>)}
+      </ul>
+    ) : null}
+    <a class="card-link" href={`/notes/${note.slug}/`}>Read note</a>
+  </div>
+</article>
