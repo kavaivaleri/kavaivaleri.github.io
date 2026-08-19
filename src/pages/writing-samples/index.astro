@@ -1,0 +1,28 @@
+---
+import PublicationCard from "../../components/PublicationCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublications } from "../../lib/content";
+
+const publications = await getPublications();
+---
+
+<BaseLayout
+  title="Writing Samples"
+  description="Published writing samples by Valeriia Kuka, including AI, ML, prompt engineering, and technical content work."
+>
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <p class="eyebrow">Writing Samples</p>
+        <h1>Published writing samples</h1>
+        <p>
+          Examples of my published AI/ML explainers, company profiles, research
+          summaries, tutorials, and industry analysis.
+        </p>
+      </div>
+      <div class="grid grid-2" style="margin-top: 1.75rem;">
+        {publications.map((publication) => <PublicationCard publication={publication} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -5,47 +5,79 @@ import { getProfile } from "../lib/content";
 const profile = await getProfile();
 const services = [
   {
-    id: "technical-content-strategy",
-    title: "Technical content strategy",
-    description:
-      "Positioning, topic architecture, editorial calendars, briefs, and recurring formats for AI/ML products and technical education.",
-    outcomes: [
-      "Clear content pillars for technical and business readers.",
-      "Roadmaps connected to launches, SEO, newsletters, and social distribution.",
-      "Editorial systems that make complex work easier to explain consistently.",
-    ],
-  },
-  {
-    id: "audience-and-newsletter-growth",
-    title: "Audience and newsletter growth",
-    description:
-      "Organic growth systems for technical newsletters, founder channels, community launches, and course funnels.",
-    outcomes: [
-      "Repeatable formats built around audience behavior.",
-      "Distribution loops across articles, newsletters, and social channels.",
-      "Performance reviews that turn analytics into next editorial moves.",
-    ],
-  },
-  {
     id: "founder-led-content",
-    title: "Founder-led content and ghostwriting",
+    title: "Founder-Led Content",
     description:
-      "Technical narratives, launch posts, thought leadership, and social content that keep a founder's point of view sharp and credible.",
-    outcomes: [
-      "Posts and essays grounded in the founder's expertise.",
-      "Messaging that translates technical work without flattening it.",
-      "Editorial support for high-stakes launches and timely industry moments.",
+      "Strategic content development for founders and technical leaders building a credible public voice.",
+    details:
+      "I translate subject-matter expertise into authoritative content for LinkedIn and X, working from interviews, recordings, notes, and technical source material. Engagements can cover editorial positioning, content planning, writing, cross-channel adaptation, publication support, and performance analysis.",
+    groups: [
+      {
+        title: "What the service can include",
+        items: [
+          "Content positioning, voice, and editorial themes",
+          "Regular interviews or content-capture sessions",
+          "Topic and audience research",
+          "Editorial calendar development",
+          "LinkedIn and X content",
+          "Long-form posts and threads",
+          "Adaptation of one idea across multiple formats",
+          "Editing and revision",
+          "Publication support",
+          "Performance reviews and editorial recommendations",
+        ],
+      },
     ],
   },
   {
-    id: "editorial-operations",
-    title: "Editorial operations and AI-enabled workflows",
+    id: "technical-ai-ml-content",
+    title: "Technical AI/ML Content",
     description:
-      "Practical systems for lean content teams: contributor workflows, review loops, style guides, and AI-assisted production.",
-    outcomes: [
-      "Writer onboarding, briefs, quality bars, and review processes.",
-      "Content migration, metadata, and SEO automation where useful.",
-      "Workflows that increase output without losing editorial judgment.",
+      "Research-led editorial content for companies working in artificial intelligence, machine learning, and developer technology.",
+    details:
+      "I produce technically accurate, accessible content grounded in primary sources, product documentation, and subject-matter expertise. Formats include technical explainers, in-depth articles, educational content, founder bylines, product-focused content, case studies, and substantive editing.",
+    groups: [
+      {
+        title: "What the service can include",
+        items: [
+          "Topic development and editorial briefing",
+          "Source and competitor research",
+          "Subject-matter expert interviews",
+          "Article structure and outline",
+          "Writing and revision",
+          "Fact-checking and source attribution",
+          "Editing for accuracy, clarity, and narrative flow",
+          "Search optimization where relevant",
+          "Formatting and publication support",
+        ],
+      },
+    ],
+  },
+  {
+    id: "newsletter-strategy-production",
+    title: "Newsletter Strategy and Production",
+    description:
+      "Editorial strategy and end-to-end production for technical newsletters.",
+    details:
+      "I develop the newsletter's positioning, structure, recurring formats, and editorial roadmap, then manage the research, writing, editing, and preparation of individual editions. I also support content distribution, sponsor integration, performance analysis, and ongoing editorial improvement.",
+    groups: [
+      {
+        title: "What the service can include",
+        items: [
+          "Audience and newsletter positioning",
+          "Editorial concept and content structure",
+          "Voice and style development",
+          "Recurring sections and formats",
+          "Editorial calendar",
+          "Topic research",
+          "Writing and substantive editing",
+          "Subject lines and preview text",
+          "Sponsor-copy editing and integration",
+          "Formatting and publication preparation",
+          "Cross-channel content repurposing",
+          "Performance analysis and editorial recommendations",
+        ],
+      },
     ],
   },
 ];
@@ -53,16 +85,16 @@ const services = [
 
 <BaseLayout
   title="Services"
-  description="Content strategy, audience growth, founder-led content, and editorial operations services for AI/ML companies."
+  description="Content strategy and editorial execution for AI companies, technical products, and industry experts."
 >
   <section class="section">
     <div class="shell">
       <div class="section-heading">
         <p class="eyebrow">Services</p>
-        <h1>Content systems for technical AI/ML teams</h1>
+        <h1>Content strategy and editorial execution</h1>
         <p>
-          I help teams turn complex technical work into credible content programs
-          that can grow with the company.
+          Content strategy and editorial execution for AI companies, technical
+          products, and industry experts.
         </p>
       </div>
     </div>
@@ -75,9 +107,17 @@ const services = [
           <div class="card-body">
             <h2>{service.title}</h2>
             <p>{service.description}</p>
-            <ul class="prose">
-              {service.outcomes.map((outcome) => <li>{outcome}</li>)}
-            </ul>
+            <p>{service.details}</p>
+            <div class="service-groups">
+              {service.groups.map((group) => (
+                <div class="service-group">
+                  <h3>{group.title}</h3>
+                  <ul>
+                    {group.items.map((item) => <li>{item}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </article>
       ))}
@@ -88,10 +128,10 @@ const services = [
     <div class="shell">
       <div class="cta-band">
         <p class="eyebrow">Work together</p>
-        <h2>Need a technical content system with a clear editorial spine?</h2>
+        <h2>Need stronger content strategy or editorial support?</h2>
         <div class="button-row">
           <a class="button-secondary" href={`mailto:${profile.email}`}>Email me</a>
-          <a class="button-secondary" href="/projects/">View case studies</a>
+          <a class="button-secondary" href="/work/">View case studies</a>
         </div>
       </div>
     </div>

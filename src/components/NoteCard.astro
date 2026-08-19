@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { Note } from "../lib/content";
 import { formatDate } from "../lib/utils";
 
@@ -9,10 +10,16 @@ type Props = {
 const { note } = Astro.props;
 ---
 
-<article class="surface card">
+<article class="surface card note-card">
   {note.image ? (
-    <a class="card-image" href={`/notes/${note.slug}/`} aria-label={note.title}>
-      <img src={note.image} alt="" loading="lazy" />
+    <a class="card-image" href={`/blog/${note.slug}/`} aria-label={note.title}>
+      <Image
+        src={note.image}
+        alt=""
+        loading="lazy"
+        widths={[180, 240, 320]}
+        sizes="(min-width: 900px) 180px, 38vw"
+      />
     </a>
   ) : null}
   <div class="card-body">
@@ -20,13 +27,13 @@ const { note } = Astro.props;
       {formatDate(note.publishedAt)}
       {note.readTime ? ` / ${note.readTime}` : ""}
     </p>
-    <h2><a href={`/notes/${note.slug}/`}>{note.title}</a></h2>
+    <h2><a href={`/blog/${note.slug}/`}>{note.title}</a></h2>
     <p>{note.description}</p>
     {note.tags.length ? (
       <ul class="tag-list" aria-label="Tags">
         {note.tags.slice(0, 4).map((tag) => <li>{tag}</li>)}
       </ul>
     ) : null}
-    <a class="card-link" href={`/notes/${note.slug}/`}>Read note</a>
+    <a class="card-link" href={`/blog/${note.slug}/`}>Read post</a>
   </div>
 </article>

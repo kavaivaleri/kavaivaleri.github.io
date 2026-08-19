@@ -1,0 +1,29 @@
+---
+import ProjectCard from "../../components/ProjectCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getWorkCases } from "../../lib/content";
+
+const workCases = await getWorkCases();
+---
+
+<BaseLayout
+  title="Work"
+  description="Selected content strategy, social growth, newsletter, and technical writing case studies by Valeriia Kuka."
+>
+  <section class="work-index-hero">
+    <div class="shell">
+      <p class="eyebrow">Work</p>
+      <h1>Selected work across content strategy, growth, and technical storytelling.</h1>
+      <p class="lead">
+        Case studies from AI, data, and developer education teams where editorial
+        systems, distribution, and audience understanding had to work together.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="shell work-grid">
+      {workCases.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</BaseLayout>

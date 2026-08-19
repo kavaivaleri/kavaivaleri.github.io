@@ -1,5 +1,5 @@
 import { siteConfig } from "./site";
-import type { Note, Profile, Project } from "./content";
+import type { Note, Profile, WorkCase } from "./content";
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.siteUrl).toString();
@@ -28,16 +28,16 @@ export function articleJsonLd(note: Note) {
     headline: note.title,
     description: note.description,
     datePublished: note.publishedAt,
-    url: absoluteUrl(`/notes/${note.slug}/`),
+    url: absoluteUrl(`/blog/${note.slug}/`),
   };
 }
 
-export function projectJsonLd(project: Project) {
+export function workJsonLd(work: WorkCase) {
   return {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    name: project.title,
-    description: project.description,
-    url: absoluteUrl(`/projects/${project.slug}/`),
+    name: work.title,
+    description: work.description,
+    url: absoluteUrl(`/work/${work.slug}/`),
   };
 }

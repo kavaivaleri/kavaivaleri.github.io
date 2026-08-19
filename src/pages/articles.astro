@@ -1,28 +1,5 @@
 ---
-import PublicationCard from "../components/PublicationCard.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getPublications } from "../lib/content";
-
-const publications = await getPublications();
+import RedirectPage from "../components/RedirectPage.astro";
 ---
 
-<BaseLayout
-  title="Articles"
-  description="AI, ML, prompt engineering, and technical writing articles by Valeriia Kuka."
->
-  <section class="section">
-    <div class="shell">
-      <div class="section-heading">
-        <p class="eyebrow">Articles</p>
-        <h1>Articles and editorial work</h1>
-        <p>
-          AI/ML explainers, company profiles, research summaries, tutorials,
-          and industry analysis.
-        </p>
-      </div>
-      <div class="grid grid-2" style="margin-top: 1.75rem;">
-        {publications.map((publication) => <PublicationCard publication={publication} />)}
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+<RedirectPage to="/writing-samples/" title="Writing Samples" />

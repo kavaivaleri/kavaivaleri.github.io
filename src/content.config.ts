@@ -1,4 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const requiredString = z.string().trim().min(1);
 const dateString = requiredString.refine(
@@ -16,84 +18,106 @@ const booleanish = z.preprocess(
   z.boolean().optional(),
 );
 
-const project = z
-  .object({
-    slug: requiredString,
-    title: requiredString,
-    description: requiredString,
-    category: requiredString,
-    year: requiredString,
-    featured: z.boolean(),
-    image: requiredString.optional(),
-    caseStudy: z.boolean().optional(),
-    technologies: z.array(requiredString).min(1),
-    highlights: z.array(requiredString).min(1),
-    links: z.array(
-      z.object({
-        label: requiredString,
-        url: z.string().url(),
-      }),
-    ),
-  })
-  .passthrough();
-
 const about = defineCollection({
-  type: "content",
-  schema: z
-    .object({
-      name: requiredString,
-      pronouns: requiredString.optional(),
-      title: requiredString,
-      email: requiredString.email(),
-      location: requiredString,
-      linkedin: z.string().url(),
-      twitter: z.string().url().optional(),
-      github: z.string().url().optional(),
-    })
-    .passthrough(),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/about" }),
+  schema: z.looseObject({
+    name: requiredString,
+    pronouns: requiredString.optional(),
+    title: requiredString,
+    email: z.email(),
+    location: requiredString,
+    linkedin: z.url(),
+    twitter: z.url().optional(),
+    github: z.url().optional(),
+  }),
 });
 
 const notes = defineCollection({
-  type: "content",
-  schema: z
-    .object({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/notes" }),
+  schema: ({ image }) =>
+    z.looseObject({
       title: requiredString,
       description: requiredString.optional(),
       excerpt: requiredString.optional(),
       publishedAt: dateString,
       tags: z.array(requiredString).optional(),
       readTime: requiredString.optional(),
-      image: requiredString.optional(),
-      imageUrl: requiredString.optional(),
+      image: image().optional(),
+      imageUrl: image().optional(),
       published: booleanish,
-    })
-    .passthrough(),
-});
-
-const projects = defineCollection({
-  type: "data",
-  schema: z.array(project),
+    }),
 });
 
 const publications = defineCollection({
-  type: "content",
-  schema: z
-    .object({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/publications" }),
+  schema: z.looseObject({
+    title: requiredString,
+    description: requiredString.optional(),
+    url: z.url(),
+    publication: requiredString,
+    category: requiredString.optional(),
+    publishedAt: dateString,
+    featured: booleanish,
+    readTime: requiredString.optional(),
+  }),
+});
+
+const work = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/work" }),
+  schema: ({ image }) =>
+    z.looseObject({
       title: requiredString,
-      description: requiredString.optional(),
-      url: z.string().url(),
-      publication: requiredString,
-      category: requiredString.optional(),
-      publishedAt: dateString,
-      featured: booleanish,
-      readTime: requiredString.optional(),
-    })
-    .passthrough(),
+      headline: requiredString,
+      description: requiredString,
+      client: requiredString,
+      completed: requiredString,
+      role: requiredString,
+      category: requiredString,
+      featured: z.boolean(),
+      heroImage: image().optional(),
+      focus: requiredString,
+      scope: requiredString,
+      tags: z.array(requiredString).min(1),
+      stats: z.array(
+        z.object({
+          value: requiredString,
+          label: requiredString,
+        }),
+      ),
+      links: z.array(
+        z.object({
+          label: requiredString,
+          url: z.url(),
+        }),
+      ),
+      evidence: z
+        .object({
+          followerGrowth: z.object({
+            title: requiredString,
+            period: requiredString,
+            points: z.array(
+              z.object({
+                month: z.number().nonnegative(),
+                value: z.number().positive(),
+                displayValue: requiredString,
+                date: requiredString,
+              }),
+            ),
+          }),
+          results: z.array(
+            z.object({
+              title: requiredString,
+              paragraphs: z.array(requiredString).min(1),
+            }),
+          ),
+        })
+        .optional(),
+    }),
 });
 
 export const collections = {
   about,
   notes,
-  projects,
   publications,
+  work,
 };

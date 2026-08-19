@@ -1,23 +1,37 @@
 import { getCollection, getEntry } from "astro:content";
 
-import projectsData from "../content/projects/projects.json";
 import { sortByNewest } from "./utils";
 
-export type Project = {
+export type ContentImage = {
+  src: string;
+  width: number;
+  height: number;
+  format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
+};
+
+export type WorkCase = {
   slug: string;
   title: string;
+  headline: string;
   description: string;
+  client: string;
+  completed: string;
+  role: string;
   category: string;
-  year: string;
   featured: boolean;
-  image?: string;
-  caseStudy?: boolean;
-  technologies: string[];
-  highlights: string[];
+  heroImage?: ContentImage;
+  focus: string;
+  scope: string;
+  tags: string[];
+  stats: Array<{
+    value: string;
+    label: string;
+  }>;
   links: Array<{
     label: string;
     url: string;
   }>;
+  body: string;
 };
 
 export type Profile = {
@@ -53,7 +67,7 @@ export type Note = {
   publishedAt: string;
   tags: string[];
   readTime?: string;
-  image?: string;
+  image?: ContentImage;
 };
 
 function stripMarkdown(markdown: string) {
@@ -79,6 +93,10 @@ function excerptFromContent(content: string, maxLength = 160) {
   return `${slice.slice(0, slice.lastIndexOf(" "))}...`;
 }
 
+function contentBody(entry: { body?: string }) {
+  return entry.body ?? "";
+}
+
 function isPublished(value: boolean | undefined) {
   return value === undefined || value;
 }
@@ -94,8 +112,9 @@ export async function getProfile(): Promise<Profile> {
     throw new Error("Missing src/content/about/profile.md");
   }
 
+  const body = contentBody(entry);
   const intro =
-    entry.body
+    body
       .split("\n\n")
       .map((chunk) => chunk.trim())
       .find((chunk) => chunk && !chunk.startsWith("#")) ?? "";
@@ -103,7 +122,7 @@ export async function getProfile(): Promise<Profile> {
   return {
     ...entry.data,
     intro,
-    body: entry.body,
+    body,
   };
 }
 
@@ -114,7 +133,8 @@ export async function getPublications(): Promise<Publication[]> {
     .map((entry) => ({
       title: entry.data.title,
       slug: slugFromId(entry.id),
-      description: entry.data.description ?? excerptFromContent(entry.body, 190),
+      description:
+        entry.data.description ?? excerptFromContent(contentBody(entry), 190),
       url: entry.data.url,
       publication: entry.data.publication,
       category: entry.data.category ?? "Article",
@@ -152,8 +172,8 @@ export async function getNotes(): Promise<Note[]> {
         description:
           entry.data.description ??
           entry.data.excerpt ??
-          excerptFromContent(entry.body, 190),
-        body: entry.body,
+          excerptFromContent(contentBody(entry), 190),
+        body: contentBody(entry),
         publishedAt: entry.data.publishedAt,
         tags: entry.data.tags ?? [],
         readTime: entry.data.readTime,
@@ -166,12 +186,31 @@ export async function getLatestNotes(limit = 3) {
   return (await getNotes()).slice(0, limit);
 }
 
-export function getProjects(): Project[] {
-  return [...(projectsData as Project[])].sort(
-    (a, b) => Number(b.featured) - Number(a.featured),
-  );
+export async function getWorkCases(): Promise<WorkCase[]> {
+  const entries = await getCollection("work");
+
+  return entries
+    .map((entry) => ({
+      title: entry.data.title,
+      slug: slugFromId(entry.id),
+      headline: entry.data.headline,
+      description: entry.data.description,
+      client: entry.data.client,
+      completed: entry.data.completed,
+      role: entry.data.role,
+      category: entry.data.category,
+      featured: entry.data.featured,
+      heroImage: entry.data.heroImage,
+      focus: entry.data.focus,
+      scope: entry.data.scope,
+      tags: entry.data.tags,
+      stats: entry.data.stats,
+      links: entry.data.links,
+      body: contentBody(entry),
+    }))
+    .sort((a, b) => Number(b.featured) - Number(a.featured));
 }
 
-export function getProjectBySlug(slug: string) {
-  return getProjects().find((project) => project.slug === slug);
+export async function getFeaturedWork(limit = 3) {
+  return (await getWorkCases()).filter((work) => work.featured).slice(0, limit);
 }

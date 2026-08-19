@@ -5,7 +5,7 @@ A static Astro portfolio site for `valeriiakuka.com`, deployed to GitHub Pages.
 ## Stack
 
 - Astro with static output
-- Astro content collections for profile, notes, and publications
+- Astro content collections for profile, blog posts, and writing samples
 - Plain CSS in `src/styles/global.css`
 - GitHub Actions deployment to Pages
 
@@ -16,9 +16,9 @@ src/pages/              Astro routes
 src/components/         Shared Astro components
 src/layouts/            Shared page layout
 src/content/about/      Profile and CV content
-src/content/notes/      Notes in Markdown
-src/content/publications/ External publication entries
-src/content/projects/   Project data
+src/content/notes/      Blog posts in Markdown
+src/content/publications/ External writing sample entries
+src/content/work/       Work case studies
 public/                 Images, CNAME, feed, robots, and sitemap
 ```
 
@@ -26,11 +26,11 @@ public/                 Images, CNAME, feed, robots, and sitemap
 
 Edit the main profile and CV in `src/content/about/profile.md`.
 
-Add notes as Markdown files in `src/content/notes/`.
+Add blog posts as Markdown files in `src/content/notes/`.
 
-Add external publication entries as Markdown files in `src/content/publications/`.
+Add external writing sample entries as Markdown files in `src/content/publications/`.
 
-Edit project cards and project pages in `src/content/projects/projects.json`.
+Edit work case studies in `src/content/work/`.
 
 ## Local Development
 

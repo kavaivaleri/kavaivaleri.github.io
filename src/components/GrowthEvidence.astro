@@ -1,0 +1,187 @@
+---
+type GrowthPoint = {
+  month: number;
+  value: number;
+  displayValue: string;
+  date: string;
+};
+
+type Evidence = {
+  followerGrowth: {
+    title: string;
+    period: string;
+    points: GrowthPoint[];
+  };
+};
+
+const { evidence } = Astro.props as { evidence: Evidence };
+const chart = evidence.followerGrowth;
+const width = 900;
+const height = 390;
+const padding = { top: 44, right: 58, bottom: 54, left: 62 };
+const plotWidth = width - padding.left - padding.right;
+const plotHeight = height - padding.top - padding.bottom;
+const maxMonth = Math.max(...chart.points.map((point) => point.month));
+const maxFollowers = 50000;
+const baseline = padding.top + plotHeight;
+const ticks = [0, 10000, 20000, 30000, 40000];
+
+const points = chart.points.map((point, index) => ({
+  ...point,
+  x: padding.left + (point.month / maxMonth) * plotWidth,
+  y: padding.top + plotHeight - (point.value / maxFollowers) * plotHeight,
+  anchor: index === 0 ? "start" : index === chart.points.length - 1 ? "end" : "middle",
+}));
+
+const linePath = points
+  .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`)
+  .join(" ");
+const areaPath = `${linePath} L ${points.at(-1)?.x.toFixed(1)} ${baseline} L ${points[0].x.toFixed(1)} ${baseline} Z`;
+---
+
+<section class="growth-evidence" aria-label="Follower growth evidence">
+  <figure class="growth-chart">
+    <figcaption>
+      <div>
+        <strong>{chart.title}</strong>
+        <span>{chart.period}</span>
+      </div>
+      <span>Selected milestones</span>
+    </figcaption>
+
+    <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-labelledby="follower-chart-title follower-chart-desc">
+      <title id="follower-chart-title">{chart.title}</title>
+      <desc id="follower-chart-desc">Follower milestones rose from under 1,000 in January 2021 to 46,000 in February 2023.</desc>
+
+      {ticks.map((tick) => {
+        const y = padding.top + plotHeight - (tick / maxFollowers) * plotHeight;
+        return (
+          <g class="chart-gridline">
+            <line x1={padding.left} y1={y} x2={width - padding.right} y2={y} />
+            <text x={padding.left - 14} y={y + 5} text-anchor="end">{tick === 0 ? "0" : `${tick / 1000}K`}</text>
+          </g>
+        );
+      })}
+
+      <path class="chart-area" d={areaPath} />
+      <path class="chart-line" d={linePath} />
+
+      {points.map((point) => (
+        <g class="chart-point">
+          <circle cx={point.x} cy={point.y} r="6" />
+          <text class="chart-value" x={point.x} y={point.y - 18} text-anchor={point.anchor}>{point.displayValue}</text>
+          <text class="chart-date" x={point.x} y={point.y + 25} text-anchor={point.anchor}>{point.date}</text>
+        </g>
+      ))}
+    </svg>
+    <p class="chart-note">The chart uses reported milestone values; the under-1K starting point is plotted at 1K for scale.</p>
+  </figure>
+
+</section>
+
+<style>
+  .growth-evidence {
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: clamp(3rem, 7vw, 5rem);
+  }
+
+  .growth-chart {
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.52);
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .growth-chart figcaption {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .growth-chart figcaption div {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .growth-chart figcaption strong {
+    color: var(--foreground);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.7rem);
+  }
+
+  .growth-chart svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 0.5rem;
+    overflow: visible;
+  }
+
+  .chart-gridline line {
+    stroke: var(--border);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .chart-gridline text,
+  .chart-date {
+    fill: #74807a;
+    font-family: var(--font-sans);
+    font-size: 13px;
+  }
+
+  .chart-area {
+    fill: rgba(120, 83, 101, 0.1);
+  }
+
+  .chart-line {
+    fill: none;
+    stroke: #785365;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 5;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .chart-point circle {
+    fill: #fbfaf7;
+    stroke: #272c29;
+    stroke-width: 2.5;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .chart-value {
+    fill: #1f2522;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .chart-note {
+    margin-top: 0.25rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 560px) {
+    .growth-chart {
+      overflow-x: auto;
+    }
+
+    .growth-chart svg {
+      min-width: 680px;
+    }
+
+    .growth-chart figcaption > span {
+      display: none;
+    }
+  }
+</style>

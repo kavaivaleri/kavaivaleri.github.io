@@ -1,0 +1,28 @@
+---
+import NoteCard from "../../components/NoteCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getNotes } from "../../lib/content";
+
+const notes = await getNotes();
+---
+
+<BaseLayout
+  title="Blog"
+  description="Blog posts on AI tools, learning, content work, and technical workflows by Valeriia Kuka."
+>
+  <section class="section">
+    <div class="shell">
+      <div class="section-heading">
+        <p class="eyebrow">Blog</p>
+        <h1>Blog</h1>
+        <p>
+          Short posts about AI tools, content workflows, and learning how
+          technical products are built.
+        </p>
+      </div>
+      <div class="grid grid-2" style="margin-top: 1.75rem;">
+        {notes.map((note) => <NoteCard note={note} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -10,7 +10,7 @@ tags:
   - "Career Development"
 readTime: "2 min read"
 published: true
-image: "/images/blog/laptop.png"
+image: "../../assets/blog/laptop.png"
 ---
 
 When I joined Learn Prompting, the onboarding wasn't the usual "upload content into a CMS."

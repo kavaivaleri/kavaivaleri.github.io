@@ -1,0 +1,25 @@
+---
+import { siteConfig } from "../lib/site";
+
+type Props = {
+  to: string;
+  title?: string;
+};
+
+const { to, title = "Redirecting" } = Astro.props;
+const absoluteTarget = new URL(to, siteConfig.siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <link rel="canonical" href={absoluteTarget} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <p><a href={to}>Continue to {absoluteTarget}</a></p>
+  </body>
+</html>

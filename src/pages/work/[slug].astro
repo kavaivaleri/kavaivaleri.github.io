@@ -1,0 +1,176 @@
+---
+import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
+
+import GrowthEvidence from "../../components/GrowthEvidence.astro";
+import StructuredData from "../../components/StructuredData.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { slugFromId } from "../../lib/content";
+import { workJsonLd } from "../../lib/seo";
+import thesequenceSubscribers from "../../assets/projects/thesequence-subscribers.jpg";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("work");
+
+  return entries.map((entry) => ({
+    params: { slug: slugFromId(entry.id) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const body = entry.body ?? "";
+const work = {
+  title: entry.data.title,
+  slug: slugFromId(entry.id),
+  headline: entry.data.headline,
+  description: entry.data.description,
+  client: entry.data.client,
+  completed: entry.data.completed,
+  role: entry.data.role,
+  category: entry.data.category,
+  featured: entry.data.featured,
+  heroImage: entry.data.heroImage,
+  focus: entry.data.focus,
+  scope: entry.data.scope,
+  tags: entry.data.tags,
+  stats: entry.data.stats,
+  links: entry.data.links,
+  evidence: entry.data.evidence,
+  body,
+};
+const showTheSequenceSource = work.slug === "thesequence-community-growth";
+---
+
+<BaseLayout title={work.title} description={work.description} image={work.heroImage}>
+  <StructuredData data={workJsonLd(work)} />
+
+  <article class:list={{ "case-has-evidence": work.evidence }}>
+    <section class="case-hero">
+      <div class="shell">
+        <a class="case-back" href="/work/">Work</a>
+        <div class="case-title-grid">
+          <div>
+            <p class="eyebrow">{work.category}</p>
+            <h1>{work.title}</h1>
+          </div>
+          <p class="case-headline">{work.headline}</p>
+        </div>
+
+        <div class="case-meta">
+          <div>
+            <span>Client</span>
+            <strong>{work.client}</strong>
+          </div>
+          <div>
+            <span>Completed</span>
+            <strong>{work.completed}</strong>
+          </div>
+          <div>
+            <span>Role</span>
+            <strong>{work.role}</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {work.heroImage ? (
+      <section class="case-visual-section">
+        <div class="shell">
+          <div class:list={{ "case-visual": true, "case-visual-banner": showTheSequenceSource }}>
+            <Image
+              src={work.heroImage}
+              alt={showTheSequenceSource ? "The Sequence of AI Knowledge newsletter header" : ""}
+              loading="eager"
+              widths={[768, 1152, 1536]}
+              sizes="(min-width: 900px) 80vw, calc(100vw - 2rem)"
+            />
+            {!showTheSequenceSource ? (
+              <div class="case-visual-overlay">
+                <p>{work.focus}</p>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </section>
+    ) : null}
+
+    <section class="case-body-section">
+      <div class="shell case-layout">
+        <aside class="case-sidebar">
+          <div>
+            <p class="case-sidebar-label">Focus</p>
+            <p>{work.focus}</p>
+          </div>
+          <div>
+            <p class="case-sidebar-label">Scope</p>
+            <p>{work.scope}</p>
+          </div>
+          <div>
+            <p class="case-sidebar-label">Tags</p>
+            <ul class="tag-list">
+              {work.tags.map((tag) => <li>{tag}</li>)}
+            </ul>
+          </div>
+          {work.links.length ? (
+            <div>
+              <p class="case-sidebar-label">Links</p>
+              <ul class="sidebar-list">
+                {work.links.map((link) => (
+                  <li><a href={link.url} target="_blank" rel="noreferrer">{link.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </aside>
+
+        <div>
+          <div class="case-stats">
+            {work.stats.map((stat) => (
+              <div>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+          {showTheSequenceSource ? (
+            <figure class="case-source-figure">
+              <a href="https://thesequence.substack.com/p/-so-what-is-thesequence" target="_blank" rel="noreferrer">
+                <Image
+                  src={thesequenceSubscribers}
+                  alt="TheSequence subscriber overview showing technology companies, research organizations, and universities represented among its readership"
+                  loading="lazy"
+                  widths={[728, 1092, 1456]}
+                  sizes="(min-width: 1024px) 728px, calc(100vw - 2rem)"
+                />
+              </a>
+              <figcaption>
+                Historical subscriber overview published by TheSequence in May 2021. Source: <a href="https://thesequence.substack.com/p/-so-what-is-thesequence" target="_blank" rel="noreferrer">What is TheSequence?</a>
+              </figcaption>
+            </figure>
+          ) : null}
+          <div class="prose case-prose">
+            <Content />
+          </div>
+          {work.evidence ? (
+            <section class="case-results" aria-labelledby="case-results-title">
+              <div class="prose case-prose case-results-heading">
+                <h2 id="case-results-title">Results</h2>
+              </div>
+              <GrowthEvidence evidence={work.evidence} />
+              <div class="prose case-prose case-results-copy">
+                {work.evidence.results.map((section) => (
+                  <section>
+                    <h3>{section.title}</h3>
+                    {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+                  </section>
+                ))}
+              </div>
+            </section>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

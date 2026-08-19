@@ -10,10 +10,10 @@ tags:
   - "Web Development"
 readTime: "2 min read"
 published: true
-image: "/images/blog/to-do.png"
+image: "../../assets/blog/to-do.png"
 ---
 
-I [decided to join AI DevTools Zoomcamp](/notes/do-i-use-ai/) and was genuinely curious what I'd be able to build.
+I decided to join AI DevTools Zoomcamp and was genuinely curious what I'd be able to build.
 
 In the first module of the course, we build a TODO app using the Django framework.
 
@@ -24,10 +24,9 @@ For someone who doesn't come from a classic software engineering background, AI 
 
 Insane, but: It took about 10 minutes for Cursor to scaffold a working Django TODO app. I followed the homework instructions, asked the AI to build the project, and watched it piece everything together.
 
-<figure>
-  <img src="/images/blog/simple-to-do-app.png" alt="Simple To-Do App" />
-  <figcaption>Simple To-Do App</figcaption>
-</figure>
+![Simple To-Do App](../../assets/blog/simple-to-do-app.png)
+
+*Simple To-Do App*
 
 While the model was generating code, I tried to reverse-engineer what it was doing:
 
@@ -37,22 +36,19 @@ While the model was generating code, I tried to reverse-engineer what it was doi
 
 That alone was a great learning experience.
 
-<figure>
-  <img src="/images/blog/girly-version-to-do-view.png" alt="Girly Version To-Do View" />
-  <figcaption>Girly Version To-Do View</figcaption>
-</figure>
+![Girly Version To-Do View](../../assets/blog/girly-version-to-do-view.png)
+
+*Girly Version To-Do View*
 
 Then I started experimenting a bit more and created a girly-pixelated version (pushed to the extreme 😂🌸) with a calendar view and repeated tasks.
 
-<figure>
-  <img src="/images/blog/girly-version-task.png" alt="Girly Version Task View" />
-  <figcaption>Girly Version Task View</figcaption>
-</figure>
+![Girly Version Task View](../../assets/blog/girly-version-task.png)
 
-<figure>
-  <img src="/images/blog/girly-version-calendar-view.png" alt="Girly Version Calendar View" />
-  <figcaption>Girly Version Calendar View</figcaption>
-</figure>
+*Girly Version Task View*
+
+![Girly Version Calendar View](../../assets/blog/girly-version-calendar-view.png)
+
+*Girly Version Calendar View*
 
 It definitely needs work (the font is unreadable and repeating events don't actually repeat yet). But it was a fun way to explore how far I could push the interface with AI assistance.
 
